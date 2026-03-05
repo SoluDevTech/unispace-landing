@@ -9,7 +9,6 @@
  */
 
 import { Icon } from "astro-icon/components";
-
 import Badge from "@/components/badge/Badge.astro";
 import FeatureCard from "@/components/feature-card/FeatureCardSmall.astro";
 
@@ -19,7 +18,21 @@ interface FeatureData {
   text: string;
 }
 
-const featureData: FeatureData[] = [
+interface Props {
+  badge?: string;
+  title?: string;
+  description?: string;
+  features?: { icon: string; title: string; description: string }[];
+}
+
+const {
+  badge = "Features",
+  title = "Super slick animations",
+  description = "Lorem ipsum dolor sit amet consectetur, adipisicing elit corporis.",
+  features,
+} = Astro.props;
+
+const defaultFeatureData: FeatureData[] = [
   {
     icon: "tabler/calendar-check",
     title: "Connect all our contacts",
@@ -54,15 +67,19 @@ const featureData: FeatureData[] = [
             rerum, reiciendis quisquam cum sunt.`,
   },
 ];
+
+const featureData: FeatureData[] = features
+  ? features.map((f) => ({ icon: f.icon, title: f.title, text: f.description }))
+  : defaultFeatureData;
 ---
 
 <section id="feature-cards-small" class="py-16 md:py-20">
   <div class="site-container relative">
     <div class="mx-auto mb-16 text-center md:max-w-2xl" data-mos="fade-up">
-      <Badge>Features</Badge>
-      <h2 class="h2 mt-4 mb-4">Super slick animations</h2>
+      <Badge>{badge}</Badge>
+      <h2 class="h2 mt-4 mb-4">{title}</h2>
       <p class="description text-lg text-pretty md:text-xl">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit corporis.
+        {description}
       </p>
     </div>
     <div

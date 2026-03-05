@@ -15,29 +15,45 @@ import { useTranslations } from "@/js/translationUtils";
 import { getLocalizedRoute } from "@/js/translationUtils";
 
 interface pricingItem {
-  name: string; // plan name
-  description: string; // plan description
-  featured?: boolean; // if true, will be highlighted or otherwise featured
+  name: string;
+  description: string;
+  featured?: boolean;
   price: {
-    custom?: boolean; // if true, will show "contact us" instead of price
-    monthly?: number; // monthly price if paid by month
-    yearly?: number; // monthly price if paid by year
+    custom?: boolean;
+    monthly?: number;
+    yearly?: number;
   };
-  features: string[]; // list of features
-  href: string; // button link to sign up or other page
-  linkText: string; // text for the button
+  features: string[];
+  href: string;
+  linkText: string;
 }
 
-// This is designed for 3 pricing items, but can be modified to support more
-const pricingData: pricingItem[] = [
+interface Props {
+  title?: string;
+  plans?: {
+    name: string;
+    description: string;
+    featured?: boolean;
+    priceMonthly?: number | null;
+    priceYearly?: number | null;
+    features: string[];
+    linkText: string;
+  }[];
+  currency?: string;
+}
+
+const {
+  title = "A plan for every business",
+  plans,
+  currency = "$",
+} = Astro.props;
+
+const defaultPricingData: pricingItem[] = [
   {
     name: "Basic",
     description: "Essential features for beginners. Get started with ease",
     featured: false,
-    price: {
-      monthly: 29,
-      yearly: 19,
-    },
+    price: { monthly: 29, yearly: 19 },
     features: ["Basic Features", "1 user", "2 GB Free Access", "Limited Support"],
     href: "/sign-up",
     linkText: "Get Started",
@@ -46,10 +62,7 @@ const pricingData: pricingItem[] = [
     name: "Professional",
     description: "Perfect for solo professionals. Unlock advanced features",
     featured: true,
-    price: {
-      monthly: 49,
-      yearly: 39,
-    },
+    price: { monthly: 49, yearly: 39 },
     features: ["Pro features", "Up to 10 users", "50 GB Free Access", "Priority support"],
     href: "/sign-up",
     linkText: "Get Started",
@@ -58,15 +71,24 @@ const pricingData: pricingItem[] = [
     name: "Enterprise",
     description: "Scale your business faster. Comprehensive plan for large companies",
     featured: false,
-    price: {
-      monthly: 99,
-      yearly: 79,
-    },
+    price: { monthly: 99, yearly: 79 },
     features: ["Pro features", "Unlimited Users", "200 GB Free Access", "Premium Support"],
     href: "/sign-up",
     linkText: "Get Started",
   },
 ];
+
+const pricingData: pricingItem[] = plans
+  ? plans.map((p) => ({
+      name: p.name,
+      description: p.description,
+      featured: p.featured,
+      price: { monthly: p.priceMonthly ?? 0, yearly: p.priceYearly ?? 0 },
+      features: p.features,
+      href: "/sign-up",
+      linkText: p.linkText,
+    }))
+  : defaultPricingData;
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(currLocale);
@@ -78,7 +100,7 @@ const t = useTranslations(currLocale);
       <!-- <Badge>Pricing</Badge> -->
     </div>
     <div class="flex justify-center">
-      <h2 class="h2 inline text-center">A plan for every business</h2>
+      <h2 class="h2 inline text-center">{title}</h2>
     </div>
 
     <!-- Toggle switch for monthly or yearly pricing -->
@@ -133,11 +155,11 @@ const t = useTranslations(currLocale);
                 ) : (
                   <>
                     <div class="pricing-monthly">
-                      <h4 class="text-4xl font-medium">${plan.price.monthly} / mo</h4>
+                      <h4 class="text-4xl font-medium">{currency}{plan.price.monthly} / mo</h4>
                       <span class="description inline-block text-sm">(paid monthly)</span>
                     </div>
                     <div class="pricing-yearly hidden">
-                      <h4 class="text-4xl font-medium">${plan.price.yearly} / mo</h4>
+                      <h4 class="text-4xl font-medium">{currency}{plan.price.yearly} / mo</h4>
                       <span class="description inline-block text-sm">(paid yearly)</span>
                     </div>
                   </>

@@ -581,6 +581,137 @@ const Resume = (locale: (typeof locales)[number]) =>
   });
 
 /**
+ * * Landing Page singleton
+ */
+const LandingPage = (locale: (typeof locales)[number]) =>
+  singleton({
+    label: `Landing Page (${locale.toUpperCase()})`,
+    path: `src/data/landing/${locale}/landing/index`,
+    format: { data: "json" },
+    schema: {
+      heroTitle: fields.text({
+        label: "Hero Title",
+        validation: { isRequired: true },
+      }),
+      heroDescription: fields.text({
+        label: "Hero Description",
+        multiline: true,
+        validation: { isRequired: true },
+      }),
+      features: fields.array(
+        fields.object({
+          icon: fields.text({
+            label: "Icon",
+            description: "Icon name (e.g. 'tabler/cloud')",
+            validation: { isRequired: true },
+          }),
+          title: fields.text({
+            label: "Title",
+            validation: { isRequired: true },
+          }),
+          description: fields.text({
+            label: "Description",
+            validation: { isRequired: true },
+          }),
+        }),
+        {
+          label: "Features",
+          itemLabel: (props) => props.fields.title.value,
+        },
+      ),
+      stepsTitle: fields.text({
+        label: "Steps Section Title",
+        validation: { isRequired: true },
+      }),
+      steps: fields.array(
+        fields.object({
+          title: fields.text({
+            label: "Title",
+            validation: { isRequired: true },
+          }),
+          description: fields.text({
+            label: "Description",
+            validation: { isRequired: true },
+          }),
+        }),
+        {
+          label: "Steps",
+          itemLabel: (props) => props.fields.title.value,
+        },
+      ),
+      galleryTitle: fields.text({
+        label: "Gallery Title",
+        validation: { isRequired: true },
+      }),
+      galleryDescription: fields.text({
+        label: "Gallery Description",
+        validation: { isRequired: true },
+      }),
+      pricingTitle: fields.text({
+        label: "Pricing Title",
+        validation: { isRequired: true },
+      }),
+      pricingPlans: fields.array(
+        fields.object({
+          name: fields.text({
+            label: "Plan Name",
+            validation: { isRequired: true },
+          }),
+          description: fields.text({
+            label: "Plan Description",
+            validation: { isRequired: true },
+          }),
+          featured: fields.checkbox({ label: "Featured" }),
+          priceMonthly: fields.number({ label: "Monthly Price" }),
+          priceYearly: fields.number({ label: "Yearly Price" }),
+          features: fields.array(fields.text({ label: "Feature" }), {
+            label: "Features",
+            itemLabel: (props) => props.value,
+          }),
+          linkText: fields.text({
+            label: "Button Text",
+            validation: { isRequired: true },
+          }),
+        }),
+        {
+          label: "Pricing Plans",
+          itemLabel: (props) => props.fields.name.value,
+        },
+      ),
+      ctaTitle: fields.text({
+        label: "CTA Title",
+        validation: { isRequired: true },
+      }),
+      ctaDescription: fields.text({
+        label: "CTA Description",
+        multiline: true,
+        validation: { isRequired: true },
+      }),
+      ctaButtonText: fields.text({
+        label: "CTA Button Text",
+        validation: { isRequired: true },
+      }),
+      faq: fields.array(
+        fields.object({
+          question: fields.text({
+            label: "Question",
+            validation: { isRequired: true },
+          }),
+          answer: fields.text({
+            label: "Answer",
+            multiline: true,
+            validation: { isRequired: true },
+          }),
+        }),
+        {
+          label: "FAQ",
+          itemLabel: (props) => props.fields.question.value,
+        },
+      ),
+    },
+  });
+
+/**
  * * Other Pages collection
  * For items like legal pages, about pages, etc.
  * This gets used by Astro Content Collections, so if you update this, you'll need to update the Astro Content Collections schema
@@ -647,5 +778,6 @@ export default {
   Careers,
   Projects,
   Resume,
+  LandingPage,
   OtherPages,
 };

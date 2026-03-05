@@ -158,6 +158,53 @@ const resumeCollection = defineCollection({
     }),
 });
 
+// landing page
+const landingCollection = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{json,jsonc}", base: "./src/data/landing" }),
+  schema: () =>
+    z.object({
+      heroTitle: z.string(),
+      heroDescription: z.string(),
+      features: z.array(
+        z.object({
+          icon: z.string(),
+          title: z.string(),
+          description: z.string(),
+        }),
+      ),
+      stepsTitle: z.string(),
+      steps: z.array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+        }),
+      ),
+      galleryTitle: z.string(),
+      galleryDescription: z.string(),
+      pricingTitle: z.string(),
+      pricingPlans: z.array(
+        z.object({
+          name: z.string(),
+          description: z.string(),
+          featured: z.boolean().optional(),
+          priceMonthly: z.number().nullable().optional(),
+          priceYearly: z.number().nullable().optional(),
+          features: z.array(z.string()),
+          linkText: z.string(),
+        }),
+      ),
+      ctaTitle: z.string(),
+      ctaDescription: z.string(),
+      ctaButtonText: z.string(),
+      faq: z.array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        }),
+      ),
+    }),
+});
+
 // other pages
 const otherPagesCollection = defineCollection({
   loader: glob({ pattern: "**/[^_]*{md,mdx}", base: "./src/data/otherPages" }),
@@ -190,6 +237,7 @@ export const collections = {
   careers: careersCollection,
   projects: projectsCollection,
   resume: resumeCollection,
+  landing: landingCollection,
   otherPages: otherPagesCollection,
   codeToggles: codeToggleCollection,
 };

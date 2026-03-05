@@ -1,15 +1,59 @@
 ---
-import HeroBasic from "@/components/hero/HeroBasic.astro";
-import HeroOverview from "@/components/hero/HeroOverview.astro";
-import { getLocaleFromUrl } from "@/js/localeUtils";
-import { getTranslatedData, useTranslations } from "@/js/translationUtils";
-import OverviewLayout from "@/layouts/OverviewLayout.astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import CtaCardBgImage from "@/components/cta/CtaCardBgImage.astro";
+import FaqAccordions from "@/components/faq/FaqAccordions.astro";
+import FeatureCardsSmall from "@/components/feature/FeatureCardsSmall.astro";
+import FeatureLightboxMarquee from "@/components/feature/FeatureLightboxMarquee.astro";
+import FeatureSteps from "@/components/feature/FeatureSteps.astro";
+import HeroDownload from "@/components/hero/HeroDownload.astro";
+import PricingThreeCards from "@/components/pricing/PricingThreeCards.astro";
+import { filterCollectionByLanguage, getLocaleFromUrl } from "@/js/localeUtils";
+import { getTranslatedData } from "@/js/translationUtils";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
-const t = useTranslations(currLocale);
+
+const landingEntries = await getCollection("landing");
+const filtered = filterCollectionByLanguage(landingEntries, "en");
+const data = filtered[0]!.data;
 ---
 
-<OverviewLayout title={siteData.title} description={siteData.description}>
-  <HeroOverview slot="above-overview" />
-</OverviewLayout>
+<BaseLayout title={siteData.title} description={siteData.description} navStyle="default">
+  <HeroDownload title={data.heroTitle} description={data.heroDescription} />
+
+  <FeatureCardsSmall
+    badge="Features"
+    title="Everything you need in one app"
+    description="Unispace brings together the tools you use every day."
+    features={data.features}
+  />
+
+  <FeatureSteps
+    title={data.stepsTitle}
+    steps={data.steps}
+    buttonText="Download Now"
+    buttonHref="#hero-download"
+  />
+
+  <FeatureLightboxMarquee
+    badge="Gallery"
+    title={data.galleryTitle}
+    description={data.galleryDescription}
+  />
+
+  <PricingThreeCards title={data.pricingTitle} plans={data.pricingPlans} currency="€" />
+
+  <CtaCardBgImage
+    title={data.ctaTitle}
+    description={data.ctaDescription}
+    buttonText={data.ctaButtonText}
+    buttonHref="#hero-download"
+  />
+
+  <FaqAccordions
+    title="Frequently Asked Questions"
+    description="Find answers to common questions about Unispace"
+    faqItems={data.faq}
+  />
+</BaseLayout>

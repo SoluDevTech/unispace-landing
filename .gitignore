@@ -34,4 +34,4 @@ CLAUDE.md
 
 # Skills.sh config
 .agents
-skills-lock.json
+skills-lock.json/*

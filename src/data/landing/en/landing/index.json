@@ -1,0 +1,137 @@
+{
+  "heroTitle": "All your productivity tools, unified",
+  "heroDescription": "Unispace consolidates your favorite apps into a single, distraction-free workspace. Boost your efficiency on desktop.",
+  "features": [
+    {
+      "icon": "tabler/layout-grid",
+      "title": "Multiple Workspaces",
+      "description": "Organize your tools into separate workspaces — Professional, Personal, or custom. Switch between them instantly."
+    },
+    {
+      "icon": "tabler/layout-dashboard",
+      "title": "Customizable Layout",
+      "description": "Drag, drop, and resize your apps to build the perfect workspace. Your layout is saved automatically."
+    },
+    {
+      "icon": "tabler/calendar-check",
+      "title": "Calendar Integration",
+      "description": "Embed Google Calendar, Outlook, or any web-based calendar directly in your workspace."
+    },
+    {
+      "icon": "tabler/list-check",
+      "title": "App Catalog",
+      "description": "Get started instantly with pre-configured popular apps: Notion, Slack, Gmail, Trello, and more."
+    },
+    {
+      "icon": "tabler/notes",
+      "title": "No Account Required",
+      "description": "Use Unispace fully in local mode without creating any account. Sign in only if you want cloud sync."
+    },
+    {
+      "icon": "tabler/cloud",
+      "title": "Universal Integrations",
+      "description": "Connect any web app via URL. If it runs in a browser, it works in Unispace."
+    }
+  ],
+  "stepsTitle": "Get started in minutes",
+  "steps": [
+    {
+      "title": "Download",
+      "description": "Choose your platform and install Unispace in seconds."
+    },
+    {
+      "title": "Add your tools",
+      "description": "Pick from our catalog of popular apps or paste any URL — Notion, Slack, Gmail, Trello, and thousands more."
+    },
+    {
+      "title": "Get productive",
+      "description": "Arrange your apps, switch between workspaces, and focus on what matters."
+    }
+  ],
+  "galleryTitle": "See Unispace in action",
+  "galleryDescription": "Discover how Unispace brings all your tools together in one beautiful interface.",
+  "pricingTitle": "A plan for every need",
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "description": "Get started with essential features at no cost",
+      "featured": false,
+      "priceMonthly": 0,
+      "priceYearly": 0,
+      "features": [
+        "Basic features",
+        "2 default workspaces",
+        "Community support",
+        "Unlimited integrations"
+      ],
+      "linkText": "Get Started"
+    },
+    {
+      "name": "Pro",
+      "description": "Unlock full power for professionals",
+      "featured": true,
+      "priceMonthly": 9,
+      "priceYearly": 7,
+      "features": [
+        "Unlimited custom workspaces",
+        "Priority support",
+        "Cloud sync",
+        "Unlimited integrations",
+        "Advanced analytics"
+      ],
+      "linkText": "Go Pro"
+    },
+    {
+      "name": "Team",
+      "description": "Collaboration tools for your entire team",
+      "featured": false,
+      "priceMonthly": 19,
+      "priceYearly": 15,
+      "features": [
+        "Everything in Pro",
+        "Team collaboration",
+        "Admin console",
+        "SSO authentication",
+        "Dedicated support"
+      ],
+      "linkText": "Start Free Trial"
+    }
+  ],
+  "ctaTitle": "Ready to unify your workflow?",
+  "ctaDescription": "Download Unispace today and bring all your productivity tools together in one powerful desktop app.",
+  "ctaButtonText": "Download Now",
+  "faq": [
+    {
+      "question": "Which operating systems does Unispace support?",
+      "answer": "Unispace is available for Windows 10+ and macOS 12 (Monterey) and later. We're working on a Linux version as well."
+    },
+    {
+      "question": "Do I need an account to use Unispace?",
+      "answer": "No. Unispace works fully in local mode without any account. Your workspaces and app layout are saved directly on your machine. Creating an account is entirely optional and only needed if you want to sync your configuration across multiple devices via the cloud."
+    },
+    {
+      "question": "Is my data secure?",
+      "answer": "Absolutely. In local mode, your data never leaves your machine. If you choose cloud sync, your data is encrypted both in transit and at rest. We never sell your data to third parties."
+    },
+    {
+      "question": "Can I use Unispace offline?",
+      "answer": "Yes! Your workspaces, app layout, and configuration are preserved offline. The web apps you've added will require an internet connection to load their content, just like they would in a browser."
+    },
+    {
+      "question": "Which apps can I integrate?",
+      "answer": "All of them. Unispace comes with a catalog of popular pre-configured apps like Gmail, Notion, Slack, Trello, GitHub, and Figma. You can also add any web app by pasting its URL — if it runs in a browser, it works in Unispace."
+    },
+    {
+      "question": "Can I organize my apps into different workspaces?",
+      "answer": "Yes! Unispace comes with two default workspaces — Professional and Personal. You can also create as many custom workspaces as you want (Pro plan), each with its own set of apps and layout."
+    },
+    {
+      "question": "Can I customize the layout of my apps?",
+      "answer": "Absolutely. You can drag and drop your apps to rearrange them, resize each app window, and configure the number of apps per row. Your layout is saved automatically so it's always ready when you open Unispace."
+    },
+    {
+      "question": "Can I cancel my subscription anytime?",
+      "answer": "Yes, you can cancel your subscription at any time. Your data remains accessible, and you'll retain access to Pro features until the end of your billing period."
+    }
+  ]
+}

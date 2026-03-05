@@ -1,0 +1,137 @@
+{
+  "heroTitle": "Tous vos outils de productivité, unifiés",
+  "heroDescription": "Unispace regroupe vos applications préférées dans un espace de travail unique et sans distraction. Boostez votre efficacité sur desktop.",
+  "features": [
+    {
+      "icon": "tabler/layout-grid",
+      "title": "Espaces multiples",
+      "description": "Organisez vos outils dans des espaces de travail distincts — Professionnel, Personnel, ou personnalisé. Basculez entre eux instantanément."
+    },
+    {
+      "icon": "tabler/layout-dashboard",
+      "title": "Disposition personnalisable",
+      "description": "Glissez, déposez et redimensionnez vos apps pour créer l'espace de travail parfait. Votre disposition est sauvegardée automatiquement."
+    },
+    {
+      "icon": "tabler/calendar-check",
+      "title": "Intégration calendrier",
+      "description": "Intégrez Google Calendar, Outlook ou n'importe quel calendrier web directement dans votre espace."
+    },
+    {
+      "icon": "tabler/list-check",
+      "title": "Catalogue d'apps",
+      "description": "Démarrez en quelques secondes avec des apps populaires préconfigurées : Notion, Slack, Gmail, Trello, et bien d'autres."
+    },
+    {
+      "icon": "tabler/notes",
+      "title": "Aucun compte requis",
+      "description": "Utilisez Unispace en mode local sans aucun compte. Connectez-vous uniquement pour synchroniser votre configuration entre vos appareils."
+    },
+    {
+      "icon": "tabler/cloud",
+      "title": "Intégrations universelles",
+      "description": "Connectez n'importe quelle app web via URL. Si ça tourne dans un navigateur, ça marche dans Unispace."
+    }
+  ],
+  "stepsTitle": "Démarrez en quelques minutes",
+  "steps": [
+    {
+      "title": "Téléchargez",
+      "description": "Choisissez votre plateforme et installez Unispace en quelques secondes."
+    },
+    {
+      "title": "Ajoutez vos outils",
+      "description": "Choisissez parmi notre catalogue d'apps populaires ou collez n'importe quelle URL — Notion, Slack, Gmail, Trello, et des milliers d'autres."
+    },
+    {
+      "title": "Soyez productif",
+      "description": "Organisez vos apps, basculez entre vos espaces, et concentrez-vous sur l'essentiel."
+    }
+  ],
+  "galleryTitle": "Unispace en action",
+  "galleryDescription": "Découvrez comment Unispace rassemble tous vos outils dans une seule interface.",
+  "pricingTitle": "Un plan pour chaque besoin",
+  "pricingPlans": [
+    {
+      "name": "Gratuit",
+      "description": "Commencez avec les fonctionnalités essentielles",
+      "featured": false,
+      "priceMonthly": 0,
+      "priceYearly": 0,
+      "features": [
+        "Fonctionnalités de base",
+        "2 espaces par défaut",
+        "Support communautaire",
+        "Intégrations illimitées"
+      ],
+      "linkText": "Commencer"
+    },
+    {
+      "name": "Pro",
+      "description": "Débloquez toute la puissance pour les professionnels",
+      "featured": true,
+      "priceMonthly": 9,
+      "priceYearly": 7,
+      "features": [
+        "Espaces personnalisés illimités",
+        "Support prioritaire",
+        "Synchronisation cloud",
+        "Intégrations illimitées",
+        "Analyses avancées"
+      ],
+      "linkText": "Passer Pro"
+    },
+    {
+      "name": "Équipe",
+      "description": "Outils de collaboration pour toute votre équipe",
+      "featured": false,
+      "priceMonthly": 19,
+      "priceYearly": 15,
+      "features": [
+        "Tout dans Pro",
+        "Collaboration d'équipe",
+        "Console d'administration",
+        "Authentification SSO",
+        "Support dédié"
+      ],
+      "linkText": "Essai gratuit"
+    }
+  ],
+  "ctaTitle": "Prêt à unifier votre workflow ?",
+  "ctaDescription": "Téléchargez Unispace aujourd'hui et rassemblez tous vos outils de productivité dans une seule application desktop.",
+  "ctaButtonText": "Télécharger maintenant",
+  "faq": [
+    {
+      "question": "Quels systèmes d'exploitation sont supportés ?",
+      "answer": "Unispace est disponible pour Windows 10+ et macOS 12 (Monterey) et versions ultérieures. Une version Linux est en cours de développement."
+    },
+    {
+      "question": "Ai-je besoin d'un compte pour utiliser Unispace ?",
+      "answer": "Non. Unispace fonctionne entièrement en mode local sans aucun compte. Vos espaces de travail et votre disposition d'apps sont sauvegardés directement sur votre machine. La création d'un compte est entièrement optionnelle et n'est nécessaire que si vous souhaitez synchroniser votre configuration entre plusieurs appareils via le cloud."
+    },
+    {
+      "question": "Mes données sont-elles sécurisées ?",
+      "answer": "Absolument. En mode local, vos données ne quittent jamais votre machine. Si vous optez pour la synchronisation cloud, vos données sont chiffrées en transit et au repos. Nous ne vendons jamais vos données à des tiers."
+    },
+    {
+      "question": "Puis-je utiliser Unispace hors ligne ?",
+      "answer": "Oui ! Vos espaces de travail, votre disposition d'apps et votre configuration sont conservés hors ligne. Les apps web que vous avez ajoutées nécessiteront une connexion internet pour charger leur contenu, comme dans un navigateur classique."
+    },
+    {
+      "question": "Quelles applications puis-je intégrer ?",
+      "answer": "Toutes. Unispace propose un catalogue d'apps populaires préconfigurées comme Gmail, Notion, Slack, Trello, GitHub et Figma. Vous pouvez aussi ajouter n'importe quelle app web en collant son URL — si ça tourne dans un navigateur, ça marche dans Unispace."
+    },
+    {
+      "question": "Puis-je organiser mes apps dans différents espaces de travail ?",
+      "answer": "Oui ! Unispace propose deux espaces par défaut — Professionnel et Personnel. Vous pouvez aussi créer autant d'espaces personnalisés que vous le souhaitez (plan Pro), chacun avec son propre ensemble d'apps et sa propre disposition."
+    },
+    {
+      "question": "Puis-je personnaliser la disposition de mes apps ?",
+      "answer": "Absolument. Vous pouvez glisser-déposer vos apps pour les réorganiser, redimensionner chaque fenêtre, et configurer le nombre d'apps par ligne. Votre disposition est sauvegardée automatiquement pour être prête à chaque ouverture d'Unispace."
+    },
+    {
+      "question": "Puis-je annuler mon abonnement à tout moment ?",
+      "answer": "Oui, vous pouvez annuler votre abonnement à tout moment. Vos données restent accessibles et vous conservez l'accès aux fonctionnalités Pro jusqu'à la fin de votre période de facturation."
+    }
+  ]
+}

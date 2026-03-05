@@ -3,11 +3,25 @@
  * * CTA centered card with background image
  */
 
-// take a look at the actual image to see recommended dimensions
 import bgImage from "@images/cta/storm-bg-crop.webp";
 import { Image } from "astro:assets";
-
 import Button from "@/components/button/Button.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  title = "Make your next website incredible",
+  description = "A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.",
+  buttonText = "Get Starter",
+  buttonHref = "https://cosmicthemes.com/themes/starter/",
+} = Astro.props;
+
+const isExternal = buttonHref.startsWith("http");
 ---
 
 <section id="cta-center" class="site-container overflow-hidden py-16 md:py-20">
@@ -29,20 +43,18 @@ import Button from "@/components/button/Button.astro";
 
     <div class="relative">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="h2 text-foreground mb-4">Make your next website incredible</h2>
+        <h2 class="h2 text-foreground mb-4">{title}</h2>
         <p class="text-foreground/80 mx-auto mb-16 max-w-xl tracking-tight md:text-lg">
-          A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations,
-          CMS - all ready to go.
+          {description}
         </p>
         <div class="relative flex justify-center">
           <Button
             variant="secondary"
-            href="https://cosmicthemes.com/themes/starter/"
-            target="_blank"
+            href={buttonHref}
             arrow="right"
-            rel="noopener noreferrer"
+            {...isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}}
           >
-            Get Starter
+            {buttonText}
           </Button>
         </div>
       </div>

@@ -14,11 +14,22 @@ import image6 from "@images/feature/living-room.jpg";
 import image7 from "@images/feature/paint-swatches.jpg";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-
 import Badge from "@/components/badge/Badge.astro";
 
+interface Props {
+  badge?: string;
+  title?: string;
+  description?: string;
+}
+
+const {
+  badge = "Gallery",
+  title = "Some of our work",
+  description = "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+} = Astro.props;
+
 interface MarqueeImages {
-  images: ImageMetadata[]; // imported images
+  images: ImageMetadata[];
 }
 
 // change these images to whatever you want!
@@ -38,10 +49,10 @@ const marqueeBottom: MarqueeImages = {
 <section id="feature-lightbox-marquee" class="py-24 md:py-28">
   <div class="site-container flex justify-center">
     <div class="mx-auto mb-16 text-center md:max-w-4xl" data-mos="fade-up">
-      <Badge>Gallery</Badge>
-      <h2 class="h2 mt-4">Some of our work</h2>
+      <Badge>{badge}</Badge>
+      <h2 class="h2 mt-4">{title}</h2>
       <p class="description mt-4 text-pretty">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        {description}
       </p>
     </div>
   </div>
@@ -259,6 +270,11 @@ const marqueeBottom: MarqueeImages = {
     const lightboxContainer = document.getElementById("lightbox-container") as HTMLDivElement;
     const closeButton = document.getElementById("close-lightbox");
     const marqueeWrapper = document.querySelector(".marquee-wrapper");
+
+    // Move lightbox to body so it escapes overflow-clip stacking context
+    if (lightboxOverlay && lightboxOverlay.parentElement !== document.body) {
+      document.body.appendChild(lightboxOverlay);
+    }
 
     // Store the original position and dimensions of the clicked image
     let originalRect: DOMRect | null = null;

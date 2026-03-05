@@ -1,0 +1,120 @@
+---
+/**
+ * Hero section with OS-aware download button and platform links.
+ */
+
+import { Icon } from "astro-icon/components";
+import Button from "@/components/button/Button.astro";
+import { getLocaleFromUrl } from "@/js/localeUtils";
+import { useTranslations } from "@/js/translationUtils";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const currLocale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(currLocale);
+---
+
+<section id="hero-download" class="mt-14 overflow-x-clip">
+  <div class="site-container py-16 md:py-20">
+    <div class="mx-auto max-w-3xl text-center">
+      <div data-mos="fade-up" data-mos-anchor="#hero-download">
+        <h1
+          class="mb-6 text-5xl leading-tight font-medium tracking-tight text-pretty md:text-6xl md:leading-tight"
+        >
+          {title}
+        </h1>
+      </div>
+
+      <p
+        class="description mb-10 text-pretty lg:text-lg"
+        data-mos="fade-up"
+        data-mos-delay=".1"
+        data-mos-anchor="#hero-download"
+      >
+        {description}
+      </p>
+
+      <div
+        data-mos="fade-up"
+        data-mos-delay=".2"
+        data-mos-anchor="#hero-download"
+        class="flex flex-col items-center gap-5"
+      >
+        <Button
+          variant="primary"
+          href="/unispace-setup.dmg"
+          id="hero-download-btn"
+          class="px-8 py-3 text-lg"
+        >
+          <Icon name="tabler/download" class="mr-2 size-5" />
+          {t("download")}
+        </Button>
+
+        <div id="hero-platform-links" class="flex items-center gap-6">
+          <a
+            href="/unispace-setup.dmg"
+            data-platform="mac-silicon"
+            class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-sm transition-colors"
+          >
+            <Icon name="tabler/brand-apple" class="size-4" />
+            Apple Silicon
+          </a>
+          <a
+            href="/unispace-setup.dmg"
+            data-platform="mac-intel"
+            class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-sm transition-colors"
+          >
+            <Icon name="tabler/brand-apple" class="size-4" />
+            Apple Intel
+          </a>
+          <a
+            href="/unispace-setup.exe"
+            data-platform="windows"
+            class="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-sm transition-colors"
+          >
+            <Icon name="tabler/brand-windows" class="size-4" />
+            Windows
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupOsDetection() {
+    const platform = navigator.platform?.toLowerCase() ?? "";
+    const userAgent = navigator.userAgent?.toLowerCase() ?? "";
+    const isMac = platform.includes("mac") || userAgent.includes("macintosh");
+    const isWindows = platform.includes("win") || userAgent.includes("windows");
+
+    const btn = document.getElementById("hero-download-btn") as HTMLAnchorElement | null;
+    if (!btn) return;
+
+    if (isWindows) {
+      btn.href = "/unispace-setup.exe";
+    }
+
+    const links = document.getElementById("hero-platform-links");
+    if (!links) return;
+
+    const activeLink = isWindows
+      ? links.querySelector<HTMLElement>('[data-platform="windows"]')
+      : isMac
+        ? links.querySelector<HTMLElement>('[data-platform="mac-silicon"]')
+        : null;
+
+    if (activeLink) {
+      activeLink.classList.remove("text-muted-foreground");
+      activeLink.classList.add("text-primary-accent", "font-medium");
+    }
+  }
+
+  setupOsDetection();
+  document.addEventListener("astro:after-swap", setupOsDetection);
+</script>

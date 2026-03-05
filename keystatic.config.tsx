@@ -22,7 +22,7 @@ export default config({
   // create a Keystatic Cloud account here: https://keystatic.cloud/
   cloud: { project: "cosmic-themes/starter" },
   ui: {
-    brand: { name: "Cosmic Themes" },
+    brand: { name: "Unispace" },
   },
   collections: {
     blogEN: Collections.Blog("en"),
@@ -49,5 +49,7 @@ export default config({
   singletons: {
     resumeEN: Collections.Resume("en"),
     resumeFR: Collections.Resume("fr"),
+    landingPageEN: Collections.LandingPage("en"),
+    landingPageFR: Collections.LandingPage("fr"),
   },
 });

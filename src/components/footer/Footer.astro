@@ -1,51 +1,63 @@
 ---
 import SiteLogo from "@/components/site-logo/SiteLogo.astro";
-import SocialIcon from "@/components/social-icon/SocialIcon.astro";
 import { getLocaleFromUrl } from "@/js/localeUtils";
 import { getTranslatedData } from "@/js/translationUtils";
-
 import FooterLink from "./FooterLink.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
 const today = new Date();
 
-/**
- * Footer columns and links configuration
- * Edit this object to change column titles and links.
- */
-const footerColumns = [
-  {
-    title: "Products",
-    links: [
-      { label: "About", href: "#" },
-      { label: "Leadership", href: "#" },
-      { label: "Press/News", href: "#" },
-      { label: "Careers/Team", href: "#" },
-      { label: "Contact Us", href: "#" },
+const footerContent = {
+  en: {
+    description:
+      "All your productivity tools, unified in one distraction-free desktop workspace. Available on Windows and macOS.",
+    columns: [
+      {
+        title: "Product",
+        links: [
+          { label: "Features", href: "/#feature-cards-small" },
+          { label: "Pricing", href: "/#pricing-three-cards" },
+          { label: "FAQ", href: "/#faq-accordions" },
+          { label: "Download", href: "/#hero-download" },
+        ],
+      },
+      {
+        title: "Legal",
+        links: [
+          { label: "Privacy Policy", href: "/privacy-policy" },
+          { label: "Terms of Use", href: "/terms" },
+        ],
+      },
     ],
+    copyright: "All Rights Reserved",
   },
-  {
-    title: "Important links",
-    links: [
-      { label: "About", href: "#" },
-      { label: "Leadership", href: "#" },
-      { label: "Press/News", href: "#" },
-      { label: "Careers/Team", href: "#" },
-      { label: "Contact Us", href: "#" },
+  fr: {
+    description:
+      "Tous vos outils de productivité, unifiés dans un espace de travail desktop sans distraction. Disponible sur Windows et macOS.",
+    columns: [
+      {
+        title: "Produit",
+        links: [
+          { label: "Fonctionnalités", href: "/#feature-cards-small" },
+          { label: "Tarifs", href: "/#pricing-three-cards" },
+          { label: "FAQ", href: "/#faq-accordions" },
+          { label: "Télécharger", href: "/#hero-download" },
+        ],
+      },
+      {
+        title: "Légal",
+        links: [
+          { label: "Politique de confidentialité", href: "/privacy-policy" },
+          { label: "Conditions d'utilisation", href: "/terms" },
+        ],
+      },
     ],
+    copyright: "Tous droits réservés",
   },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "#" },
-      { label: "Leadership", href: "#" },
-      { label: "Press/News", href: "#" },
-      { label: "Careers/Team", href: "#" },
-      { label: "Contact Us", href: "#" },
-    ],
-  },
-];
+} as const;
+
+const content = footerContent[currLocale];
 ---
 
 <section class="overflow-hidden pt-16 pb-10">
@@ -56,31 +68,13 @@ const footerColumns = [
           <div class="lg:max-w-sm">
             <SiteLogo />
             <p class="text-muted-foreground mt-4 font-medium md:max-w-xs">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus interdum facilisis
-              odio scelerisque vel neque.
+              {content.description}
             </p>
-            <div class="mt-10 flex flex-wrap gap-3 lg:mt-16">
-              <SocialIcon
-                href="https://twitter.com/BowTiedWebReapr"
-                icon="tabler/brand-x"
-                social="twitter (x)"
-              />
-              <SocialIcon
-                href="https://www.threads.com/@bowtiedwebreaper"
-                icon="tabler/brand-threads"
-                social="threads"
-              />
-              <SocialIcon
-                href="https://www.threads.com/@bowtiedwebreaper"
-                icon="tabler/brand-instagram"
-                social="instagram"
-              />
-            </div>
           </div>
         </div>
         {
-          footerColumns.map((col) => (
-            <div class="w-full p-8 sm:w-1/2 lg:w-2/12" aria-label={col.title}>
+          content.columns.map((col) => (
+            <div class="w-full p-8 sm:w-1/2 lg:w-3/12" aria-label={col.title}>
               <h3 class="font-heading mb-8 text-sm font-medium uppercase">{col.title}</h3>
               <ul class="space-y-2">
                 {col.links.map((link) => (
@@ -94,7 +88,7 @@ const footerColumns = [
     </div>
     <p class="text-muted-foreground py-5 text-center text-sm leading-normal font-medium">
       Copyright {today.getFullYear()}
-      {siteData.name}. All Rights Reserved
+      {siteData.name}. {content.copyright}
     </p>
   </div>
 </section>
