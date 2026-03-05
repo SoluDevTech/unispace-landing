@@ -15,7 +15,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
 
 const landingEntries = await getCollection("landing");
-const filtered = filterCollectionByLanguage(landingEntries, "fr");
+const filtered = filterCollectionByLanguage(landingEntries, "en");
 const data = filtered[0]!.data;
 ---
 
@@ -23,21 +23,21 @@ const data = filtered[0]!.data;
   <HeroDownload title={data.heroTitle} description={data.heroDescription} />
 
   <FeatureCardsSmall
-    badge="Fonctionnalités"
-    title="Tout ce dont vous avez besoin dans une seule app"
-    description="Unispace rassemble les outils que vous utilisez au quotidien."
+    badge="Features"
+    title="Everything you need in one app"
+    description="Unispace brings together the tools you use every day."
     features={data.features}
   />
 
   <FeatureSteps
     title={data.stepsTitle}
     steps={data.steps}
-    buttonText="Télécharger"
+    buttonText="Download Now"
     buttonHref="#hero-download"
   />
 
   <FeatureLightboxMarquee
-    badge="Galerie"
+    badge="Gallery"
     title={data.galleryTitle}
     description={data.galleryDescription}
   />
@@ -52,8 +52,8 @@ const data = filtered[0]!.data;
   />
 
   <FaqAccordions
-    title="Questions fréquentes"
-    description="Retrouvez les réponses aux questions les plus courantes sur Unispace"
+    title="Frequently Asked Questions"
+    description="Find answers to common questions about Unispace"
     faqItems={data.faq}
   />
 </BaseLayout>

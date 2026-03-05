@@ -10,7 +10,7 @@ const siteData = getTranslatedData("siteData", defaultLocale);
 import { getAllPosts } from "@/js/blogUtils";
 
 // you can switch the RSS locale here to something else if desired
-const rssLocale = defaultLocale;
+const rssLocale = "fr";
 
 // this is needed for getAuthorName() and getAuthorEmail() below
 const authors: CollectionEntry<"authors">[] = await getCollection("authors");
