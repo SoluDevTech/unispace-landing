@@ -33,5 +33,5 @@ CLAUDE.md
 .mvagnon-agents
 
 # Skills.sh config
-.agents
-skills-lock.json/*
+.agents/*
+skills-lock.json
