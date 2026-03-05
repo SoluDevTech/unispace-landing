@@ -25,30 +25,30 @@ export default config({
     brand: { name: "Unispace" },
   },
   collections: {
-    blogEN: Collections.Blog("en"),
-    blogFR: Collections.Blog("fr"),
+    // blogEN: Collections.Blog("en"),
+    // blogFR: Collections.Blog("fr"),
 
     // for now there is a limitation with keystatic where relationship fields don't work well with i18n features
     // If you need multiple languages here (you might not) just create multiple variants of the same author
     // this might look like "author-1-en" and "author-1-fr"
-    authors: Collections.Authors(""),
+    // authors: Collections.Authors(""),
 
-    servicesEN: Collections.Services("en"),
-    servicesFR: Collections.Services("fr"),
+    // servicesEN: Collections.Services("en"),
+    // servicesFR: Collections.Services("fr"),
 
-    careersEN: Collections.Careers("en"),
-    careersFR: Collections.Careers("fr"),
+    // careersEN: Collections.Careers("en"),
+    // careersFR: Collections.Careers("fr"),
 
-    otherPagesEN: Collections.OtherPages("en"),
-    otherPagesFR: Collections.OtherPages("fr"),
+    // otherPagesEN: Collections.OtherPages("en"),
+    // otherPagesFR: Collections.OtherPages("fr"),
 
-    projectsEN: Collections.Projects("en"),
-    projectsFR: Collections.Projects("fr"),
+    // projectsEN: Collections.Projects("en"),
+    // projectsFR: Collections.Projects("fr"),
   },
 
   singletons: {
-    resumeEN: Collections.Resume("en"),
-    resumeFR: Collections.Resume("fr"),
+    // resumeEN: Collections.Resume("en"),
+    // resumeFR: Collections.Resume("fr"),
     landingPageEN: Collections.LandingPage("en"),
     landingPageFR: Collections.LandingPage("fr"),
   },
