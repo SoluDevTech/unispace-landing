@@ -9,6 +9,9 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    service: { entrypoint: "astro/assets/services/noop" },
+  },
   site: "https://unispace.app",
   // i18n configuration must match src/config/translations.json.ts
   i18n: {

@@ -71,9 +71,6 @@ importers:
       react-dom:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
-      sharp:
-        specifier: ^0.34.2
-        version: 0.34.5
       swiper:
         specifier: ^12.1.2
         version: 12.1.2
