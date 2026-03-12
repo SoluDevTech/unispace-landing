@@ -1,0 +1,3 @@
+# .trivyignore - Known false positives and accepted risks
+# Format: CVE-YYYY-NNNNN
+# Add a comment above each entry explaining why it is ignored.

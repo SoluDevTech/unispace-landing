@@ -65,14 +65,14 @@ jobs:
           file: ./Dockerfile
           load: true
           platforms: linux/amd64
-          tags: kaiohz/unispace:unispace-landing-scan
+          tags: kaiohz/pickpro:unispace-landing-scan
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Trivy Image Scan (report)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "kaiohz/unispace:unispace-landing-scan"
+          image-ref: "kaiohz/pickpro:unispace-landing-scan"
           format: "table"
           severity: "CRITICAL,HIGH,MEDIUM"
           exit-code: "0"
@@ -81,7 +81,7 @@ jobs:
       - name: Trivy Image Scan (CRITICAL gate)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "kaiohz/unispace:unispace-landing-scan"
+          image-ref: "kaiohz/pickpro:unispace-landing-scan"
           format: "table"
           severity: "CRITICAL"
           exit-code: "1"
@@ -95,8 +95,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            kaiohz/unispace:unispace-landing-${{ steps.sha.outputs.result }}
-            kaiohz/unispace:unispace-landing-latest
+            kaiohz/pickpro:unispace-landing-${{ steps.sha.outputs.result }}
+            kaiohz/pickpro:unispace-landing-latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -108,7 +108,7 @@ jobs:
         run: |
           DEPLOYMENT_FILE="flux-repo/dev/unispace/unispace-landing/deployment.yaml"
           if [ -f "$DEPLOYMENT_FILE" ]; then
-            sed -i 's|image: kaiohz/unispace:unispace-landing-.*|image: kaiohz/unispace:unispace-landing-${{ steps.sha.outputs.result }}|g' "$DEPLOYMENT_FILE"
+            sed -i 's|image: kaiohz/pickpro:unispace-landing-.*|image: kaiohz/pickpro:unispace-landing-${{ steps.sha.outputs.result }}|g' "$DEPLOYMENT_FILE"
           else
             echo "Error: Deployment file not found at $DEPLOYMENT_FILE"
             exit 1
